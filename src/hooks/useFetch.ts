@@ -5,6 +5,10 @@ interface FetchData {
     url: string
 }
 
+export const api = axios.create({
+  baseURL: import.meta.env.BASE_URL,
+});
+
 function useFetch({ url } : FetchData) {
 
     const { data , isLoading , error, isError } = useQuery( ["useFetch"], async () => {
