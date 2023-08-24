@@ -1,25 +1,52 @@
-
-import { useState } from "react";
+import  { useEffect, useState } from "react";
 import { AuthContext } from "./AuthContext";
-import { User } from "../types/User";
+import { useApi } from "../hooks/useApi";
 
-function AuthProvider({children}: {children: JSX.Element}) {
-    const [user, setUser] = useState< User | null >;
-    
-    const signin = ( email: string, password: string) => {
+function AuthProvider({ children }: { children: JSX.Element }) {
+  const [token, setToken] = useState<string | null>(
+    localStorage.getItem("access_token")
+  );
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(!!token);
+  const api = useApi();
 
+  useEffect(() => {
+    if (token) {
+      localStorage.setItem("access_token", token);
+    } else {
+      localStorage.removeItem("access_token");
     }
+  }, [token]);
 
-    const signout = () => {
+  const login = async (email: string, password: string) => {
+    try {
+      const { access_token } = await api.login(email, password);
 
+      if (access_token) {
+        setIsLoggedIn(true);
+        setToken(access_token);
+      }
+    } catch (error) {
+      console.error("Login error:", error);
     }
+  };
 
-    return (
-      <AuthContext.Provider value={ user , signin, signout }>
-        {children}
-      </AuthContext.Provider>
-    )
-  }
-  
-  export default AuthProvider;
-  
+  const logout = async () => {
+    try {
+      if (token) {
+        await api.logout(token);
+        setToken(null);
+        setIsLoggedIn(false);
+      }
+    } catch (error) {
+      console.error("Logout error:", error);
+    }
+  };
+
+  return (
+    <AuthContext.Provider value={{ isLoggedIn, token, login, logout }}>
+      {children}
+    </AuthContext.Provider>
+  );
+}
+
+export default AuthProvider;
