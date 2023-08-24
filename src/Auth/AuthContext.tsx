@@ -1,6 +1,5 @@
 import { createContext } from "react";
 
-
 export type AuthContextType = {
     isLoggedIn: boolean;
     token :string | null ;

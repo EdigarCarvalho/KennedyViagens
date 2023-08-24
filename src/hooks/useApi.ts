@@ -10,6 +10,14 @@ const withAuthorizationHeader = (token: string) => ({
   },
 });
 
+interface ToolDataProps {
+  title: string;
+  link: string;
+  description: string;
+  tags: string[];
+}
+
+
 export const useApi = () => ({
   login: async (email: string, password: string) => {
     const { data } = await api.post("auth/login", { email, password });
@@ -29,7 +37,7 @@ export const useApi = () => ({
       const { data } = await api.get(`tools/${id}`, withAuthorizationHeader(token));
       return data;
     },
-    createTool: async (token: string, toolData: any) => {
+    createTool: async (token: string, toolData: ToolDataProps) => {
       const { data } = await api.post("tools", toolData, withAuthorizationHeader(token));
       return data;
     },

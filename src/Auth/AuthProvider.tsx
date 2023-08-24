@@ -7,19 +7,17 @@ function AuthProvider({ children }: { children: JSX.Element }) {
     localStorage.getItem("access_token")
   );
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(!!token);
-  const api = useApi();
+    const { login : signin, logout : signout} = useApi();
 
   useEffect(() => {
-    if (token) {
-      localStorage.setItem("access_token", token);
-    } else {
-      localStorage.removeItem("access_token");
-    }
+     token ? localStorage.setItem("access_token", token) 
+           : localStorage.removeItem("access_token");
+    
   }, [token]);
 
   const login = async (email: string, password: string) => {
     try {
-      const { access_token } = await api.login(email, password);
+      const { access_token } = await signin(email, password);
 
       if (access_token) {
         setIsLoggedIn(true);
@@ -33,7 +31,7 @@ function AuthProvider({ children }: { children: JSX.Element }) {
   const logout = async () => {
     try {
       if (token) {
-        await api.logout(token);
+        await signout(token);
         setToken(null);
         setIsLoggedIn(false);
       }
