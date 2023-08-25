@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { AuthContext } from "../../Auth/AuthContext";
-import AuthLogin from "../../components/AuthLogin";
-import AuthLogout from "../../components/AuthLogout";
+import { AuthContext } from "../../auth/AuthContext";
+import AuthLogin from "../../auth/components/AuthLogin";
+import AuthLogout from "../../auth/components/AuthLogout";
 
 
 function Auth() {

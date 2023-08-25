@@ -1,5 +1,6 @@
 import { useContext } from 'react';
-import { AuthContext } from '../../Auth/AuthContext';
+import { AuthContext } from '../../AuthContext';
+import { Button } from '../../../components/Button/index.stitches';
 
 
 function AuthLogin() {
@@ -17,7 +18,7 @@ function AuthLogin() {
 
     return (
       <>
-        <button onClick={handleClick}>logout</button>
+        <Button onClick={handleClick}>logout</Button>
       </>
     )
 }
