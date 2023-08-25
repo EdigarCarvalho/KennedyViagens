@@ -1,7 +1,7 @@
 import { styled } from "../../stitches.config";
 
 export const Input = styled('input', {
-  fontSize: '$BodySmall',
+  fontSize: "clamp(0.8rem, 1.02vw, 1.2rem)",
   width: 380,
   height: 30,
   padding: 5,
@@ -10,7 +10,14 @@ export const Input = styled('input', {
   backgroundColor: '$DarkerWhite',
   color:'$LighterInk',
   outline: 'none',
+  transition:'0.5s',
 
+  '&:invalid:focus':{
+    borderColor: '$Red',
+    color:'$Red',
+    backgroundColor: '$MostLightestRed',
+  },
+  
   '&:focus': {
     borderColor: '$MostDarkestWhite',
     backgroundColor: '$DarkestWhite',
@@ -20,6 +27,7 @@ export const Input = styled('input', {
   '&:valid, &:placeholder-shown': {
     color: '$Ink', 
   },
+
 
   '@mobile':{
         width: '100%',

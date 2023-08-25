@@ -2,13 +2,11 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../AuthContext";
 import { useNavigate } from "react-router-dom";
-import { SubmitHandler } from "react-hook-form"; // Importe o tipo SubmitHandler
-import { ErrorText, Form, FormField } from "./index.stitches";
-import * as Label from "@radix-ui/react-label";
+import { SubmitHandler } from "react-hook-form";
+import { ErrorText, Form, FormField, Label } from "./index.stitches";
 import { Button } from "../../../components/Button/index.stitches";
 import { Input } from "../../../components/Input/index.stitches";
-import { loginSchema } from "../../schema";
-import { yupResolver } from "@hookform/resolvers/yup";
+import * as form from '@radix-ui/react-form';
 
 interface FormValues {
   email: string;
@@ -17,9 +15,7 @@ interface FormValues {
 
 function AuthLogin() {
   const { login } = useContext(AuthContext);
-  const { register, handleSubmit, formState: { errors } } = useForm<FormValues>({
-    resolver: yupResolver(loginSchema) 
-  });
+  const { register, handleSubmit } = useForm<FormValues>();
   const navigate = useNavigate();
 
   const sendRequest: SubmitHandler<FormValues> = async (data) => {
@@ -35,22 +31,40 @@ function AuthLogin() {
   };
 
   return (
-      <Form onSubmit={handleSubmit(sendRequest)}>
-        <FormField>
-          <Label.Root htmlFor="email"> Email </Label.Root>
-          <Input type="text" id="firstName" {...register("email")} />
-          <ErrorText>{errors.email?.message}</ErrorText>
-        </FormField>
+    <Form onSubmit={handleSubmit(sendRequest)}>
 
-        <FormField>
-          <Label.Root htmlFor="password"> Senha </Label.Root>
-          <Input type="password" id="password" {...register("password")} />
-          <ErrorText>{errors.password?.message}</ErrorText>
-        </FormField>
+      <FormField  name="email">
+          <Label > Email </Label>
+          <form.Control asChild>
+            <Input  type="email" required {...register("email")}/>
+          </form.Control>
+          <ErrorText  match="valueMissing">
+            Por favor digite o seu e-mail
+          </ErrorText>
+          <ErrorText match="typeMismatch">
+            Por favor forneça um email válido
+          </ErrorText>
+      </FormField>
 
-        <Button type="submit">Entrar</Button>
-      </Form>
+      <FormField  name="password">
+          <Label > Senha </Label>
+          <form.Control asChild>
+            <Input type="password" required {...register("password")} />
+          </form.Control>
+          <ErrorText  match="valueMissing">
+            Por favor digite a sua senha
+          </ErrorText>
+          <ErrorText match="typeMismatch">
+            Por favor forneça uma senha válida
+          </ErrorText>
+      </FormField>
 
+      <form.Submit asChild>
+        <Button>
+          Entrar
+        </Button>
+      </form.Submit>
+    </Form>
   );
 }
 
