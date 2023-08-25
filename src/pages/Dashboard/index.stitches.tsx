@@ -4,4 +4,5 @@ export const CardsContainer = styled('section', {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
+  minWidth: '80vw',
 });

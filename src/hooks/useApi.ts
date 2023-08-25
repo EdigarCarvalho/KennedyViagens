@@ -29,19 +29,19 @@ export const useApi = () => ({
   },
 
   tools: {
-    getTools: async (token: string) => {
-      const { data } = await api.get("tools", withAuthorizationHeader(token));
+    get: async (token: string, tag: string) => {
+      const { data } = await api.get(`tools`, withAuthorizationHeader(token));
       return data;
-    },
-    getToolById: async (token: string, id: number) => {
+  },
+    getById: async (token: string, id: number) => {
       const { data } = await api.get(`tools/${id}`, withAuthorizationHeader(token));
       return data;
     },
-    createTool: async (token: string, toolData: ToolDataProps) => {
+    create: async (token: string, toolData: ToolDataProps) => {
       const { data } = await api.post("tools", toolData, withAuthorizationHeader(token));
       return data;
     },
-    deleteToolById: async (token: string, id: number) => {
+    deleteById: async (token: string, id: number) => {
       const { data } = await api.delete(`tools/${id}`, withAuthorizationHeader(token));
       return data;
     },

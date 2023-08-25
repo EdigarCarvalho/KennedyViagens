@@ -1,7 +1,7 @@
 import { styled } from "../../stitches.config";
 
-export const Input = styled('input', {
-  fontSize: "clamp(0.8rem, 1.02vw, 1.2rem)",
+export const Textarea = styled('textarea', {
+  fontSize: "clamp(0.7rem, 0.94vw, 1.1rem)",
   padding: 5,
   borderRadius: 5,
   border: '1px solid $DarkestWhite',
@@ -41,7 +41,7 @@ export const Input = styled('input', {
         },
         regular:{
           width: 380,
-          height: 30,
+          height: 90,
         },
       },
    },

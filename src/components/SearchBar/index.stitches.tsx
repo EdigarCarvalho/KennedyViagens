@@ -1,8 +1,9 @@
+import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import { styled } from "../../stitches.config";
-import { AiOutlineSearch } from "react-icons/ai";
+
 import {TextField}  from '@radix-ui/themes';
 
-export const SearchIcon = styled(AiOutlineSearch, {
+export const SearchIcon = styled(MagnifyingGlassIcon, {
   display:'inline-flex',
   marginTop:'30%',
   width: 20,
@@ -23,7 +24,7 @@ export const SearchBarStyled = styled(TextField.Root, {
   color:'$LighterInk',
   outline: 'none',
   transition:'0.5s',
-  gap: 4,
+  gap: 8,
 
   '&:focus': {
     borderColor: '$MostDarkestWhite',
@@ -43,7 +44,7 @@ export const SearchBarStyled = styled(TextField.Root, {
 
 export const TextFieldInput = styled(TextField.Input, {
   all: 'unset',
-  fontSize: "clamp(0.8rem, 1.02vw, 1.2rem)",
+  fontSize: "clamp(0.8rem, 0.9vw, 1.1rem)",
   fontFamily:'$sans',
   display:'inline',
   width: '100%',

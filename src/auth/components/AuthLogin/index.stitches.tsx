@@ -14,6 +14,7 @@ export const Form = styled( form.Root , {
 });
 
 export const FormField = styled(form.Field, {
+
   display: 'inline-flex',
   flexDirection: 'column',
   alignItems: 'flex-start',
@@ -23,6 +24,7 @@ export const FormField = styled(form.Field, {
     width: '90vw',
     paddingRight: 10,
   },
+
 });
 
 export const ErrorText = styled(form.Message, {

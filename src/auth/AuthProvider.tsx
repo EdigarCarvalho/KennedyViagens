@@ -4,8 +4,9 @@ import { useApi } from "../hooks/useApi";
 
 function AuthProvider({ children }: { children: JSX.Element }) {
   const [token, setToken] = useState<string | null>(
-    localStorage.getItem("access_token")
+''
   );
+  //    localStorage.getItem("access_token")
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(!!token);
     const { login : signin, logout : signout} = useApi();
 
