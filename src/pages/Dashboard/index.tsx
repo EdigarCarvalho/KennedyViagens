@@ -1,11 +1,17 @@
+import SearchBar from "../../components/SearchBar";
+import { CardsContainer } from "./index.stitches";
+
+
 
 function DashBoard() {
-
+  
     return (
       <>
-        DashBoard
+        <CardsContainer>
+         <SearchBar />
+        </CardsContainer>
       </>
-    )
+    );
   }
   
   export default DashBoard;
