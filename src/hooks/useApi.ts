@@ -1,5 +1,5 @@
+//useApi.ts
 import axios from "axios";
-
 export const api = axios.create({
   baseURL: "https://lively-moss-nudxlqdclfnd.vapor-farm-c1.com/api",
 });

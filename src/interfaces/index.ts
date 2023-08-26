@@ -9,6 +9,7 @@ export interface ToolType {
     link: string;
     description: string;
     tags: string[];
+    onToolRemove: () => void
 }
 
 export interface FormValues {

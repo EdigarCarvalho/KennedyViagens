@@ -1,46 +1,35 @@
-import  { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import { useApi } from '../../hooks/useApi';
 import { CardsContainer, DashboardContainer, GapContainer } from './index.stitches';
 import { AuthContext } from '../../auth/AuthContext';
 import { CompanyName, SubTitle, TextDiv } from '../Auth/index.stitches';
 import { NewToolDialog, SearchBar, Title, ToolCard } from '../../components';
 import { ToolType } from '../../interfaces';
+import { useQuery } from 'react-query'; 
+import ClipLoader from 'react-spinners/ClipLoader';
+
 
 function DashBoard() {
-  const [toolsCollection, setToolsCollection] = useState<ToolType[]>([]);
-  const [filteredTools, setFilteredTools] = useState<ToolType[]>([]);
   const { tools } = useApi();
   const { token } = useContext(AuthContext);
+  
+  const { data: toolsCollection, isLoading, isError, refetch } = useQuery<ToolType[]>('tools', () =>
+    tools.get(token ? token : '')
+  );
 
-  useEffect(() => {
-    
-    fetchData();
-  }, [token]);
-  
-  const fetchData = async () => {
-    try {
-      const data = await tools.get(token ? token : '');
-      setToolsCollection(data);
-      setFilteredTools(data); 
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
+  const [searchTerm, setSearchTerm] = useState<string>(''); 
+
+  const handleToolAction = () => {
+    refetch();
   };
-  
-    const handleToolAction = () => {
-      fetchData(); 
-    };
 
   const handleSearch = (searchTerm: string) => {
-    if (searchTerm === '') {
-      setFilteredTools(toolsCollection); 
-    } else {
-      const filtered = toolsCollection.filter((tool) =>
-        tool.tags.some((tag) => tag.toLowerCase().includes(searchTerm.toLowerCase()))
-      );
-      setFilteredTools(filtered);
-    }
+    setSearchTerm(searchTerm); 
   };
+
+  const filteredTools = toolsCollection?.filter((tool) =>
+    tool.tags.some((tag) => tag.toLowerCase().includes(searchTerm.toLowerCase()))
+  );
 
   return (
     <DashboardContainer>
@@ -57,14 +46,22 @@ function DashBoard() {
         </GapContainer>
       </div>
 
-      {toolsCollection.length === 0 ? (
+      {isLoading ? (
+              <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100px' }}>
+                <ClipLoader color={'#365DF0'} loading={true} size={50} />
+              </div>
+      ) : isError ? (
+        <Title css={{ marginTop: "30vh", textAlign: "center" }}>
+        Error na requisiçao
+      </Title>
+      ) : filteredTools?.length === 0 ? (
         <Title css={{ marginTop: "30vh", textAlign: "center" }}>
           Nenhuma ferramenta no banco de dados
         </Title>
       ) : (
         <CardsContainer>
-          {filteredTools.map((tool) => (
-            <ToolCard key={tool.id} {...tool} />
+          {filteredTools?.map((tool) => (
+            <ToolCard key={tool.id} {...tool} onToolRemove={handleToolAction} />
           ))}
         </CardsContainer>
       )}

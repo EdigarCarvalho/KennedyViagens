@@ -8,12 +8,12 @@ import {
   Tag,
 } from "./index.stitches";
 
-export function ToolCard({ id, title, description, link, tags }: ToolType) {
+export function ToolCard({ id, title, description, link, tags , onToolRemove }: ToolType) {
   return (
     <CardStyle key={id}>
       <CardHeader>
         <Title>{title}</Title>
-        <DeleteToolDialog id={id}/>
+        <DeleteToolDialog onToolRemove={onToolRemove} id={id}/>
       </CardHeader>
       <Description>{description}</Description>
       <Link href={link} target="_blank">
