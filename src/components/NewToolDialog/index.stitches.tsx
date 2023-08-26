@@ -12,6 +12,10 @@ export const DialogOverlay = styled(Dialog.Overlay, {
 });
 
 export const DialogContent = styled(Dialog.Content, {
+    display:"flex",
+    flexDirection:'column',
+    justifyContent:'space-between',
+    gap: 10,
     fontFamily: '$sans',
     backgroundColor: '$White',
     borderRadius: '$4',
@@ -22,6 +26,9 @@ export const DialogContent = styled(Dialog.Content, {
     transform: 'translate(-50%, -50%)',
     padding: 25,
     animation: 'contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1)',
+    '@tablet':{
+        maxWidth: '80vw'
+    },
     '@mobile':{
         maxWidth: '90vw'
     },
@@ -29,19 +36,19 @@ export const DialogContent = styled(Dialog.Content, {
         size: {
             ModalSmall: {
                 width: '400px',
-                minHeight: '330px',
+                minHeight: '230px',
             },
             ModalMedium: {
                 width: '600px',
-                minHeight: '330px',
+                minHeight: '200px',
             },
             ModalLarge: {
                 width: '800px',
-                minHeight: '310px',
+                minHeight: '210px',
             },
             ModalHuge: {
                 width: '960px',
-                minHeight: '290px',
+                minHeight: '190px',
             },
         },
     },

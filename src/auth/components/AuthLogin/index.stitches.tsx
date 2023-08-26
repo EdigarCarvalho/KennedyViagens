@@ -2,15 +2,20 @@ import { styled } from "../../../stitches.config";
 import * as form from '@radix-ui/react-form';
 
 export const Form = styled( form.Root , {
-  fontFamily: '$sans',
-  fontSize: "clamp(0.8rem, 1.02vw, 1.2rem)",
-  fontWeight: 600,
   display: 'flex',
+
+  fontFamily: '$sans',
+  fontSize: "$BodySmall",
+  fontWeight: 600,
   flexDirection: 'column',
   alignItems: 'center',
   gap: 10,
   boxSizing: 'border-box',
-  
+  alignSelf:"center",
+
+  '& > button':{
+    alignSelf:"end",
+  }
 });
 
 export const FormField = styled(form.Field, {

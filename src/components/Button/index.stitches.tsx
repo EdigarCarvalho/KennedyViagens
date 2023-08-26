@@ -8,6 +8,7 @@ export const Button = styled( RadixButton, {
   borderRadius: 5,
   transition: '0.3s' ,
   cursor: 'pointer',
+  fontWeight:'600',
   '@mobile':{
         width: '100%',
    },
@@ -19,8 +20,8 @@ export const Button = styled( RadixButton, {
         height: 40,
       },
       md: {
-        width: 174,
-        height: 50,
+        width: 140,
+        height: 46,
       },
       lg: {
         width: 240,

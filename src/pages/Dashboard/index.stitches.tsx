@@ -12,5 +12,6 @@ export const CardsContainer = styled('section', {
   display: 'flex',
   flexDirection: 'column',
   gap: 12,
+
 });
 

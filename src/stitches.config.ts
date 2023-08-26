@@ -61,14 +61,14 @@ export const { styled , css } = createStitches({
       sans: 'Inter, sans-serif',
     },
     fontSizes: {
-      BodySmallest: "0.7rem",
+      BodySmallest: "0.79rem",
       BodySmall: "clamp(0.8rem, 1.02vw, 1.2rem)",
       Body: "clamp(0.9rem, 1.13vw, 1.4rem)",
       Header5: "clamp(1rem, 1.26vw, 1.6rem)",
       Header4: "clamp(1.2rem, 1.51vw, 1.9rem)",
       Header3: "clamp(1.3rem, 1.63vw, 2rem)",
       Header2: "clamp(1.5rem, 1.89vw, 2.4rem)",
-      Header1: "clamp(1.8rem, 2.26vw, 2.9rem)",
+      Header1: "clamp(2rem, 2.4vw, 3rem)",
     },
     space: {
       1: '4px',

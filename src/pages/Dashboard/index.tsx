@@ -5,6 +5,7 @@ import { CardsContainer, DashboardContainer } from './index.stitches';
 import { AuthContext } from '../../auth/AuthContext';
 import ToolCard from '../../components/ToolCard';
 import SearchBar from '../../components/SearchBar'; // Certifique-se de importar o SearchBar correto aqui.
+import { Title } from '../../components/ToolCard/index.stitches';
 
 export interface ToolType {
   id: number;
@@ -57,12 +58,17 @@ function DashBoard() {
       >
         <SearchBar onSearch={handleSearch} />
         <NewToolDialog />
-      </div>
-      <CardsContainer>
-        {filteredTools.map((tool) => (
-          <ToolCard key={tool.id} {...tool} />
-        ))}
-      </CardsContainer>
+        </div>
+
+        {toolsCollection.length === 0 ? (
+          <Title css={{marginTop: '40vh'}}>Nenhuma ferramenta no banco de dados</Title>
+        ) : (
+        <CardsContainer>
+          {filteredTools.map((tool) => (
+            <ToolCard key={tool.id} {...tool} />
+          ))}
+        </CardsContainer>
+      )}
     </DashboardContainer>
   );
 }

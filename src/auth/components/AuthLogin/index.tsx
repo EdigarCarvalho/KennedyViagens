@@ -7,6 +7,7 @@ import { ErrorText, Form, FormField, Label } from "./index.stitches";
 import { Button } from "../../../components/Button/index.stitches";
 import { Input } from "../../../components/Input/index.stitches";
 import * as form from '@radix-ui/react-form';
+import { CompanyName, SubTitle } from "../../../pages/Auth/index.stitches";
 
 interface FormValues {
   email: string;
@@ -32,7 +33,6 @@ function AuthLogin() {
 
   return (
     <Form onSubmit={handleSubmit(sendRequest)}>
-
       <FormField  name="email">
           <Label > Email </Label>
           <form.Control asChild>
@@ -60,7 +60,7 @@ function AuthLogin() {
       </FormField>
 
       <form.Submit asChild>
-        <Button>
+        <Button >
           Entrar
         </Button>
       </form.Submit>

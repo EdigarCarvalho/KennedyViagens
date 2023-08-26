@@ -1,5 +1,5 @@
-import { Button } from "..";
 import { ToolType } from "../../pages/Dashboard";
+import DeleteToolDialog from "../DeleteToolDialog";
 import {
   CardStyle,
   Title,
@@ -15,7 +15,7 @@ function ToolCard({ id, title, description, link, tags }: ToolType) {
     <CardStyle key={id}>
       <CardHeader>
         <Title>{title}</Title>
-        <Button color={"ButtonSecondaryDanger"} size={"sm"}>Delete</Button>
+        <DeleteToolDialog id={id}/>
       </CardHeader>
       <Description>{description}</Description>
       <Link href={link} target="_blank">

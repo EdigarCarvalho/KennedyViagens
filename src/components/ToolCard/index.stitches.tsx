@@ -7,9 +7,7 @@ export const CardStyle = styled("div", {
 
   backgroundColor: '$DarkWhite',
   fontFamily: "$sans",
-  paddingLeft: 12,
-  paddingRight: 12,
-  paddingBottom: 12,
+  padding: 10,
   boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",  
   borderRadius:'$4',
   transition: '0.5s',
@@ -17,6 +15,7 @@ export const CardStyle = styled("div", {
   width: 830,
   minHeight: 130,
   height: 'auto',
+  gap: 10,
   '&:hover':{
     backgroundColor: '$DarkerWhite',
   },
@@ -35,39 +34,41 @@ export const CardHeader = styled("div", {
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
-  marginBottom: "20px",
+  marginBottom: 8,
 });
 
 
 export const Title = styled("h3", {
+  all: 'unset',
+  fontFamily:'$sans',
   display: "flex",
-  fontSize: "1.5rem",
-  marginBottom: "8px",
+  fontSize: "$Header3",
+  fontWeight:'600',
 });
 
 export const Description = styled("p", {
-  fontSize: "1rem",
-  marginBottom: "8px",
+  all: 'unset',
+  fontSize: "$Body",
+  textAlign:'justify',
 });
 
 export const Link = styled("a", {
+  display: "inline-flex",
+  fontSize: "$BodySmall",
+  color: "$DarkTeal",
 
-  color: "red",
-  textDecoration: "none",
-  "&:hover": {
-    textDecoration: "none",
-  },
 });
 
 export const TagsContainer = styled("div", {
-  marginTop: "8px",
+
+  fontSize: "$BodySmall",
   display: "flex",
   gap: "4px",
   flexWrap: 'wrap',
 });
 
 export const Tag = styled("span", {
-  fontSize: "0.8rem",
+  fontSize: "$BodySmallest",
   padding: "2px 8px",
   backgroundColor: "lightgray",
   borderRadius: "4px",

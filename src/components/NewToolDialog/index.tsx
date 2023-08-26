@@ -14,6 +14,7 @@ import { useApi } from "../../hooks/useApi";
 import { AuthContext } from "../../auth/AuthContext";
 import { useContext } from "react";
 import { normalizeArrayString } from "./normalizeArrayString";
+import { Title } from "../ToolCard/index.stitches";
 
 
 type FormValues = {
@@ -52,13 +53,13 @@ function NewToolDialog() {
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
-        <Button color={"ButtonSecondarySuccess"} size={"sm"}>
-          + novo
+        <Button color={"ButtonSecondarySuccess"} size={"sm"} css={{fontWeight: '600'}}>
+          + Novo
         </Button>
       </Dialog.Trigger>
 
       <Dialog.Portal>
-        <DialogContent>
+        <DialogContent size={"ModalHuge"}>
           <div
             style={{
               display: "flex",
@@ -67,7 +68,7 @@ function NewToolDialog() {
               gap: "20px",
             }}
           >
-            <Dialog.Title className="DialogTitle">Nova Ferramenta</Dialog.Title>
+            <Title >Nova Ferramenta</Title>
             <Dialog.Close asChild>
               <button
                 aria-label="Close"
@@ -80,7 +81,7 @@ function NewToolDialog() {
 
           <Form onSubmit={handleSubmit(sendRequest)}>
             <FormFieldCollection>
-              <FormFieldInner css={{ width: "100%" }} name="name">
+              <FormFieldInner css={{ width: "calc(100% - 10px)" }} name="name">
                 <Label> Nome </Label>
                 <form.Control asChild>
                   <Input
@@ -95,7 +96,7 @@ function NewToolDialog() {
                 </ErrorText>
               </FormFieldInner>
 
-              <FormFieldInner css={{ width: "100%" }} name="link">
+              <FormFieldInner css={{ width: "calc(100% - 10px)" }} name="link">
                 <Label> Link </Label>
                 <form.Control asChild>
                   <Input
@@ -115,7 +116,7 @@ function NewToolDialog() {
               <Label> Descrição </Label>
               <form.Control asChild>
                 <Textarea
-                  css={{ width: "100%" }}
+                  css={{ width: "calc(100% - 10px)" }}
                   required
                   {...register("description")}
                 />
@@ -129,7 +130,7 @@ function NewToolDialog() {
               <Label> Tags </Label>
               <form.Control asChild>
                 <Input
-                  css={{ width: "100%" }}
+                  css={{ width: "calc(100% - 10px)" }}
                   type="text"
                   required
                   {...register("tags")}
@@ -140,7 +141,6 @@ function NewToolDialog() {
               </ErrorText>
             </FormField>
 
-  
               <form.Submit asChild>
                 <Button type='submit' css={{ alignSelf: "flex-end" } }> Salvar </Button>
               </form.Submit>
