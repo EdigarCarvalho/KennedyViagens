@@ -1,20 +1,32 @@
+import { Button } from "..";
 import { ToolType } from "../../pages/Dashboard";
+import {
+  CardStyle,
+  Title,
+  Description,
+  TagsContainer,
+  Link,
+  CardHeader,
+  Tag,
+} from "./index.stitches";
 
 function ToolCard({ id, title, description, link, tags }: ToolType) {
-
   return (
-    <div key={id} >
-      <h3>{title}</h3>
-      <p>{description}</p>
-      <a href={link} target="_blank" rel="noopener noreferrer">
+    <CardStyle key={id}>
+      <CardHeader>
+        <Title>{title}</Title>
+        <Button color={"ButtonSecondaryDanger"} size={"sm"}>Delete</Button>
+      </CardHeader>
+      <Description>{description}</Description>
+      <Link href={link} target="_blank">
         {link}
-      </a>
-      <div className="tags">
+      </Link>
+      <TagsContainer>
         {tags.map((tag, index) => (
-          <span key={index}>{tag}</span>
+          <Tag key={index}>{`#${tag} `}</Tag>
         ))}
-      </div>
-    </div>
+      </TagsContainer>
+    </CardStyle>
   );
 }
 

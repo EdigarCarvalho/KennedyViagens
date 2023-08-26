@@ -1,8 +1,16 @@
 import { styled } from "../../stitches.config";
 
-export const CardsContainer = styled('section', {
+export const DashboardContainer = styled('section', {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  minWidth: '80vw',
+  gap: 20,
+  Width: '80vw',
 });
+
+export const CardsContainer = styled('section', {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: 12,
+});
+

@@ -7,7 +7,7 @@ export const Button = styled( RadixButton, {
   padding: 5,
   borderRadius: 5,
   transition: '0.3s' ,
-
+  cursor: 'pointer',
   '@mobile':{
         width: '100%',
    },
@@ -56,6 +56,16 @@ export const Button = styled( RadixButton, {
         },
         '&:active': {
           backgroundColor: '$LighterGreen',
+        }
+      },
+      ButtonSecondaryDanger: {
+        backgroundColor: '$MostLightestRed', 
+        color: '$Red',
+        '&:hover': {
+          backgroundColor: '$LightestRed',
+        },
+        '&:active': {
+          backgroundColor: '$LighterRed',
         }
       },
     },

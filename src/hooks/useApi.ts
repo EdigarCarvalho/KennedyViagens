@@ -29,12 +29,8 @@ export const useApi = () => ({
   },
 
   tools: {
-    get: async (token: string, tag: string) => {
+    get: async (token: string) => {
       const { data } = await api.get(`tools`, withAuthorizationHeader(token));
-      return data;
-  },
-    getById: async (token: string, id: number) => {
-      const { data } = await api.get(`tools/${id}`, withAuthorizationHeader(token));
       return data;
     },
     create: async (token: string, toolData: ToolDataProps) => {

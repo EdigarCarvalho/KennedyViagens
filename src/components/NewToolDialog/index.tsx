@@ -1,7 +1,6 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import * as form from "@radix-ui/react-form";
 import { SubmitHandler } from "react-hook-form";
-
 import { Button, Input, Textarea } from "../index";
 import {
   ErrorText,
@@ -9,12 +8,13 @@ import {
   Label,
   Form,
 } from "../../auth/components/AuthLogin/index.stitches";
-import { DialogOverlay, DialogContent,FormFieldCollection, FormFieldInner, XIcon, } from "./index.stitches";
+import { DialogContent,FormFieldCollection, FormFieldInner, XIcon, } from "./index.stitches";
 import { useForm } from "react-hook-form";
-import { extractHashtags } from "./extractHashtags";
 import { useApi } from "../../hooks/useApi";
 import { AuthContext } from "../../auth/AuthContext";
 import { useContext } from "react";
+import { normalizeArrayString } from "./normalizeArrayString";
+
 
 type FormValues = {
   name: string;
@@ -31,17 +31,17 @@ function NewToolDialog() {
 
   const sendRequest: SubmitHandler<FormValues> = async (formData) => {
     const { name, link, description, tags } = formData;
+
     try {
-      const hashtags = extractHashtags(tags);
+      const hashtags = normalizeArrayString(tags);
       if (name && link && description && tags ) {
-        await tools.create( token ? token : '' ,{
+        await tools.create( token ? token : '' , {
           title: name,
           link: link,
           description: description,
           tags: hashtags,
         } );
       }
-      
     } catch (error) {
       console.log(error);
     }
@@ -85,7 +85,7 @@ function NewToolDialog() {
                 <form.Control asChild>
                   <Input
                     css={{ width: "inherit" }}
-                    type="name"
+                    type="text"
                     required
                     {...register("name")}
                   />
@@ -100,7 +100,7 @@ function NewToolDialog() {
                 <form.Control asChild>
                   <Input
                     css={{ width: "inherit" }}
-                    type="link"
+                    type="text"
                     required
                     {...register("link")}
                   />
@@ -130,7 +130,7 @@ function NewToolDialog() {
               <form.Control asChild>
                 <Input
                   css={{ width: "100%" }}
-                  type="tags"
+                  type="text"
                   required
                   {...register("tags")}
                 />
@@ -140,11 +140,11 @@ function NewToolDialog() {
               </ErrorText>
             </FormField>
 
-            <Dialog.Close asChild>
+  
               <form.Submit asChild>
-                <Button css={{ alignSelf: "flex-end" }}> Salvar </Button>
+                <Button type='submit' css={{ alignSelf: "flex-end" } }> Salvar </Button>
               </form.Submit>
-            </Dialog.Close>
+
           </Form>
         </DialogContent>
       </Dialog.Portal>
