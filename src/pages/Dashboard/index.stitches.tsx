@@ -5,7 +5,7 @@ export const DashboardContainer = styled('section', {
   flexDirection: 'column',
   alignItems: 'center',
   gap: 20,
-  Width: '80vw',
+
 });
 
 export const CardsContainer = styled('section', {
@@ -13,5 +13,12 @@ export const CardsContainer = styled('section', {
   flexDirection: 'column',
   gap: 12,
 
+});
+
+export const GapContainer = styled('div', {
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  gap: 'min(27vw, 400px)',
 });
 

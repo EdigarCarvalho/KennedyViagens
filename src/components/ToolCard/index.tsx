@@ -1,16 +1,14 @@
-import { ToolType } from "../../pages/Dashboard";
-import DeleteToolDialog from "../DeleteToolDialog";
+import { Description, Title , DeleteToolDialog} from "..";
+import { ToolType } from "../../interfaces";
 import {
   CardStyle,
-  Title,
-  Description,
   TagsContainer,
   Link,
   CardHeader,
   Tag,
 } from "./index.stitches";
 
-function ToolCard({ id, title, description, link, tags }: ToolType) {
+export function ToolCard({ id, title, description, link, tags }: ToolType) {
   return (
     <CardStyle key={id}>
       <CardHeader>
@@ -30,4 +28,3 @@ function ToolCard({ id, title, description, link, tags }: ToolType) {
   );
 }
 
-export default ToolCard;

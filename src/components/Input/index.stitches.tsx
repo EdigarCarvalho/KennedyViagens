@@ -1,7 +1,7 @@
 import { styled } from "../../stitches.config";
 
 export const Input = styled('input', {
-  fontSize: "clamp(0.8rem, 1.02vw, 1.2rem)",
+  fontSize: "$BodySmall",
   padding: 5,
   borderRadius: 5,
   border: '1px solid $DarkestWhite',

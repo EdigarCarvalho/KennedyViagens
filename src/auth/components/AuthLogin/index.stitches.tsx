@@ -10,7 +10,6 @@ export const Form = styled( form.Root , {
   flexDirection: 'column',
   alignItems: 'center',
   gap: 10,
-  boxSizing: 'border-box',
   alignSelf:"center",
 
   '& > button':{
@@ -32,12 +31,3 @@ export const FormField = styled(form.Field, {
 
 });
 
-export const ErrorText = styled(form.Message, {
-  margin: 0,
-  color:'$Red',
-});
-
-export const Label = styled(form.Label, {
-  margin: 0,
-  color:'$Ink',
-});

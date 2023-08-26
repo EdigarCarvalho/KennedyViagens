@@ -69,6 +69,7 @@ export const { styled , css } = createStitches({
       Header3: "clamp(1.3rem, 1.63vw, 2rem)",
       Header2: "clamp(1.5rem, 1.89vw, 2.4rem)",
       Header1: "clamp(2rem, 2.4vw, 3rem)",
+      SuperHeader: "clamp(2.3rem, 3.1vw, 3.2rem)",
     },
     space: {
       1: '4px',

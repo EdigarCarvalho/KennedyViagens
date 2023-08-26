@@ -95,5 +95,9 @@ export const XIcon = styled(Cross2Icon, {
     },
   });
 
-
-
+export const SpaceContainer = styled('div', {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    gap: '20px',
+  });

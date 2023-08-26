@@ -1,19 +1,10 @@
 import  { useContext, useEffect, useState } from 'react';
-import NewToolDialog from '../../components/NewToolDialog';
 import { useApi } from '../../hooks/useApi';
-import { CardsContainer, DashboardContainer } from './index.stitches';
+import { CardsContainer, DashboardContainer, GapContainer } from './index.stitches';
 import { AuthContext } from '../../auth/AuthContext';
-import ToolCard from '../../components/ToolCard';
-import SearchBar from '../../components/SearchBar'; // Certifique-se de importar o SearchBar correto aqui.
-import { Title } from '../../components/ToolCard/index.stitches';
-
-export interface ToolType {
-  id: number;
-  title: string;
-  link: string;
-  description: string;
-  tags: string[];
-}
+import { CompanyName, SubTitle, TextDiv } from '../Auth/index.stitches';
+import { NewToolDialog, SearchBar, Title, ToolCard } from '../../components';
+import { ToolType } from '../../interfaces';
 
 function DashBoard() {
   const [toolsCollection, setToolsCollection] = useState<ToolType[]>([]);
@@ -22,18 +13,23 @@ function DashBoard() {
   const { token } = useContext(AuthContext);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await tools.get(token ? token : '');
-        setToolsCollection(data);
-        setFilteredTools(data); 
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
+    
     fetchData();
   }, [token]);
+  
+  const fetchData = async () => {
+    try {
+      const data = await tools.get(token ? token : '');
+      setToolsCollection(data);
+      setFilteredTools(data); 
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+  
+    const handleToolAction = () => {
+      fetchData(); 
+    };
 
   const handleSearch = (searchTerm: string) => {
     if (searchTerm === '') {
@@ -48,21 +44,24 @@ function DashBoard() {
 
   return (
     <DashboardContainer>
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          gap: 'min(27vw, 400px)',
-        }}
-      >
-        <SearchBar onSearch={handleSearch} />
-        <NewToolDialog />
-        </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+        <TextDiv css={{ alignSelf: "start", marginTop: "6vh" }}>
+          <CompanyName css={{ fontSize: "$SuperHeader" }}>FEMAQUA</CompanyName>
+          <SubTitle css={{ fontSize: "$Header3" }}>
+            Ferramentas Maravilhosas que Adoro
+          </SubTitle>
+        </TextDiv>
+        <GapContainer>
+          <SearchBar onSearch={handleSearch} />
+          <NewToolDialog onToolAdded={handleToolAction} />
+        </GapContainer>
+      </div>
 
-        {toolsCollection.length === 0 ? (
-          <Title css={{marginTop: '40vh'}}>Nenhuma ferramenta no banco de dados</Title>
-        ) : (
+      {toolsCollection.length === 0 ? (
+        <Title css={{ marginTop: "30vh", textAlign: "center" }}>
+          Nenhuma ferramenta no banco de dados
+        </Title>
+      ) : (
         <CardsContainer>
           {filteredTools.map((tool) => (
             <ToolCard key={tool.id} {...tool} />

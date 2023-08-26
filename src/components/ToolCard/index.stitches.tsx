@@ -38,20 +38,6 @@ export const CardHeader = styled("div", {
 });
 
 
-export const Title = styled("h3", {
-  all: 'unset',
-  fontFamily:'$sans',
-  display: "flex",
-  fontSize: "$Header3",
-  fontWeight:'600',
-});
-
-export const Description = styled("p", {
-  all: 'unset',
-  fontSize: "$Body",
-  textAlign:'justify',
-});
-
 export const Link = styled("a", {
   display: "inline-flex",
   fontSize: "$BodySmall",

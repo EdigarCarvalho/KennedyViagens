@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
 import { SearchBarStyled, SearchIcon, TextFieldInput } from './index.stitches';
 import { TextField } from '@radix-ui/themes';
+import { SearchBarProps } from '../../interfaces';
 
-interface SearchBarProps {
-  onSearch: (searchTerm: string) => void;
-}
-
-function SearchBar({ onSearch }: SearchBarProps) {
+export function SearchBar({ onSearch }: SearchBarProps) {
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -28,5 +25,3 @@ function SearchBar({ onSearch }: SearchBarProps) {
     </SearchBarStyled>
   );
 }
-
-export default SearchBar;

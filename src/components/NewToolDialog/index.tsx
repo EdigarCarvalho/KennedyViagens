@@ -1,31 +1,18 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import * as form from "@radix-ui/react-form";
 import { SubmitHandler } from "react-hook-form";
-import { Button, Input, Textarea } from "../index";
-import {
-  ErrorText,
-  FormField,
-  Label,
-  Form,
-} from "../../auth/components/AuthLogin/index.stitches";
-import { DialogContent,FormFieldCollection, FormFieldInner, XIcon, } from "./index.stitches";
+import { Button, ErrorText, Input, Label, Textarea, Title } from "../index";
+import { FormField, Form } from "../../auth/components/AuthLogin/index.stitches";
+import { SpaceContainer, DialogContent,FormFieldCollection, FormFieldInner, XIcon, } from "./index.stitches";
 import { useForm } from "react-hook-form";
 import { useApi } from "../../hooks/useApi";
 import { AuthContext } from "../../auth/AuthContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { normalizeArrayString } from "./normalizeArrayString";
-import { Title } from "../ToolCard/index.stitches";
+import { FormValues } from "../../interfaces";
 
-
-type FormValues = {
-  name: string;
-  link: string;
-  description: string;
-  tags: string;
-};
-
-function NewToolDialog() {
-
+export function NewToolDialog({onToolAdded}:{onToolAdded : () => void}) {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const {tools} = useApi();
   const { token } = useContext(AuthContext);
   const { register, handleSubmit } = useForm<FormValues>();
@@ -42,32 +29,28 @@ function NewToolDialog() {
           description: description,
           tags: hashtags,
         } );
+        setIsDialogOpen(false);
+        onToolAdded();
       }
     } catch (error) {
       console.log(error);
     }
+
+    
   };
   
-
-
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
-        <Button color={"ButtonSecondarySuccess"} size={"sm"} css={{fontWeight: '600'}}>
+        <Button color={"ButtonSecondarySuccess"} size={"sm"} onClick={() => setIsDialogOpen(true)} >
           + Novo
         </Button>
       </Dialog.Trigger>
 
+      {isDialogOpen && (
       <Dialog.Portal>
         <DialogContent size={"ModalHuge"}>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              gap: "20px",
-            }}
-          >
+          <SpaceContainer>
             <Title >Nova Ferramenta</Title>
             <Dialog.Close asChild>
               <button
@@ -77,9 +60,9 @@ function NewToolDialog() {
                 <XIcon />
               </button>
             </Dialog.Close>
-          </div>
+          </SpaceContainer>
 
-          <Form onSubmit={handleSubmit(sendRequest)}>
+          <Form css={{alignSelf: 'auto'}} onSubmit={handleSubmit(sendRequest)}>
             <FormFieldCollection>
               <FormFieldInner css={{ width: "calc(100% - 10px)" }} name="name">
                 <Label> Nome </Label>
@@ -148,8 +131,8 @@ function NewToolDialog() {
           </Form>
         </DialogContent>
       </Dialog.Portal>
+      )}
     </Dialog.Root>
   );
 }
 
-export default NewToolDialog;

@@ -3,16 +3,10 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../../AuthContext";
 import { useNavigate } from "react-router-dom";
 import { SubmitHandler } from "react-hook-form";
-import { ErrorText, Form, FormField, Label } from "./index.stitches";
-import { Button } from "../../../components/Button/index.stitches";
-import { Input } from "../../../components/Input/index.stitches";
+import {  Form, FormField } from "./index.stitches";
 import * as form from '@radix-ui/react-form';
-import { CompanyName, SubTitle } from "../../../pages/Auth/index.stitches";
-
-interface FormValues {
-  email: string;
-  password: string;
-}
+import { FormValues } from "../../../interfaces";
+import { Button, ErrorText, Input, Label } from "../../../components";
 
 function AuthLogin() {
   const { login } = useContext(AuthContext);

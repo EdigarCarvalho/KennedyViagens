@@ -1,12 +1,12 @@
 import * as Dialog from "@radix-ui/react-dialog";
-import { DialogContent, XIcon } from "../NewToolDialog/index.stitches";
-import { Button } from "..";
+import { DialogContent, XIcon , SpaceContainer } from "../NewToolDialog/index.stitches";
+
+import { useContext } from "react";
+import { Button, Description, Title } from "..";
 import { useApi } from "../../hooks/useApi";
 import { AuthContext } from "../../auth/AuthContext";
-import { useContext } from "react";
-import { Description, Title } from "../ToolCard/index.stitches";
 
-function DeleteToolDialog({ id } : { id : number }) {
+export function DeleteToolDialog({ id  } : { id : number  }) {
 
   const {tools} = useApi();
   const { token } = useContext(AuthContext);
@@ -29,14 +29,7 @@ function DeleteToolDialog({ id } : { id : number }) {
 
       <Dialog.Portal>
         <DialogContent size={"ModalMedium"}>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              gap: "20px",
-            }}
-          >
+          <SpaceContainer>
             <Title className="DialogTitle">Nova Ferramenta</Title>
             <Dialog.Close asChild>
               <button
@@ -46,7 +39,7 @@ function DeleteToolDialog({ id } : { id : number }) {
                 <XIcon />
               </button>
             </Dialog.Close>
-          </div>
+          </SpaceContainer>
 
           <Description>
               Deseja realmente remover essa ferramenta ?
@@ -67,12 +60,8 @@ function DeleteToolDialog({ id } : { id : number }) {
             > Sim </Button>
           </div>
 
-
-
         </DialogContent>
       </Dialog.Portal>
     </Dialog.Root>
   );
 }
-
-export default DeleteToolDialog;
