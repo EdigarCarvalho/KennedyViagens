@@ -5,24 +5,21 @@ import AuthLogout from "../../auth/components/AuthLogout";
 import { AuthChildStyle, AuthPageStyle, BlueBlock, CompanyName, SubTitle, TextDiv } from "./index.stitches";
 
 function Auth() {
-  const { isLoggedIn} = useContext(AuthContext);
+  const { isLoggedIn } = useContext(AuthContext);
 
-    return (
-        <AuthPageStyle>
-          <AuthChildStyle>
-            <TextDiv>
-              <CompanyName>FEMAQUA</CompanyName>
-              <SubTitle>Ferramentas Maravilhosas que Adoro</SubTitle>
-            </TextDiv>
+  return (
+    <AuthPageStyle>
+      <AuthChildStyle>
+        <TextDiv>
+          <CompanyName data-testid="company-name">FEMAQUA</CompanyName>
+          <SubTitle data-testid="sub-title">Ferramentas Maravilhosas que Adoro</SubTitle>
+        </TextDiv>
 
-            { isLoggedIn 
-            ? <AuthLogout />
-            : <AuthLogin />}
-          </AuthChildStyle>
-          <BlueBlock></BlueBlock>
-        </AuthPageStyle>
-    )
-  }
-  
-  export default Auth;
-  
+        {isLoggedIn ? <AuthLogout data-testid="auth-logout" /> : <AuthLogin data-testid="auth-login" />}
+      </AuthChildStyle>
+      <BlueBlock data-testid="blue-block"></BlueBlock>
+    </AuthPageStyle>
+  );
+}
+
+export default Auth;

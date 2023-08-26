@@ -26,11 +26,9 @@ export const DialogContent = styled(Dialog.Content, {
     transform: 'translate(-50%, -50%)',
     padding: 25,
     animation: 'contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1)',
+    maxWidth: '90vw',
     '@tablet':{
         maxWidth: '80vw'
-    },
-    '@mobile':{
-        maxWidth: '90vw'
     },
     variants: {
         size: {

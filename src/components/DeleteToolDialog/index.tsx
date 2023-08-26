@@ -34,7 +34,7 @@ export function DeleteToolDialog({ id, onToolRemove }: { id: number; onToolRemov
       <Dialog.Portal>
         <DialogContent size={"ModalMedium"}>
           <SpaceContainer>
-            <Title className="DialogTitle">Nova Ferramenta</Title>
+            <Title className="DialogTitle">Remover Ferramenta</Title>
             <Dialog.Close asChild>
               <button aria-label="Close" style={{ border: "none", backgroundColor: "transparent" }}>
                 <XIcon />
@@ -46,12 +46,16 @@ export function DeleteToolDialog({ id, onToolRemove }: { id: number; onToolRemov
 
           <div style={{ display: "flex", gap: "10px", alignSelf: "end" }}>
             <Dialog.Close asChild>
-              <Button color={"ButtonSecondaryDanger"} onClick={handleDelete}>
+              <Button color={"ButtonSecondaryDanger"} onClick={handleDelete}  css={{"@mobile": {width:'40vw'}}}>
                 Cancelar
               </Button>
             </Dialog.Close>
 
-            <Button color={"ButtonPrimaryDanger"} onClick={handleDelete}>
+            <Button 
+            color={"ButtonPrimaryDanger"} 
+            onClick={handleDelete}
+            css={{"@mobile": {width:'40vw'}}}
+            >
               {isDeleting ? <ClipLoader size={14} color={"white"} /> : "Sim"}
             </Button>
           </div>
