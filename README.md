@@ -25,6 +25,30 @@ Em alguns casos os comandos abaixo precisam de um sudo (ex: sudo docker build -t
     docker build -t femaqua . 
     docker run -p 8080:8080 femaqua
 
+## Rodando a Aplicação com npm
+Certifique-se de ter o Node.js instalado em sua máquina. Caso não o tenha, você pode baixá-lo [aqui](https://nodejs.org/en).
+
+Clone o repositório:
+
+    git clone https://github.com/SeuUsuario/NomeDoRepositorio.git
+    cd NomeDoRepositorio
+
+Instale as dependências:
+
+Certifique-se de estar no diretório raiz do projeto e execute o seguinte comando para instalar as dependências necessárias:
+
+    npm install
+    
+Execute a aplicação:
+
+Use o seguinte comando para iniciar a aplicação:
+
+    npm run dev
+
+ou
+
+    npm run preview
+
 # Quais ferramentas foram usadas, como e por quê?
 
 ## Stitches :
