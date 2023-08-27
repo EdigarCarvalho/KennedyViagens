@@ -8,7 +8,7 @@ function AuthProvider({ children }: { children: JSX.Element }) {
   );
   //    localStorage.getItem("access_token")
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(!!token);
-    const { login : signin, logout : signout} = useApi();
+    const { login : signin} = useApi();
 
   useEffect(() => {
      token ? localStorage.setItem("access_token", token) 
