@@ -49,10 +49,10 @@ Em alguns casos os comandos abaixo precisam de um sudo (ex: sudo docker build -t
 
  - Tempos de compilação e recarga mais rápidos durante o desenvolvimento, agilizando a iteração.
 
-## Fotos do Projeto:
+## Foto do Projeto:
 
-![image](https://github.com/EdigarCarvalho/KennedyViagens/assets/106999716/010805ce-480b-4b0b-94f0-ea34eed427a4)
+![image](https://github.com/EdigarCarvalho/KennedyViagens/assets/106999716/b82e1f04-37b5-4cd4-9731-47b9c530521b)
+![image](https://github.com/EdigarCarvalho/KennedyViagens/assets/106999716/9fdce388-bbb3-435c-b55a-3f7c9d8cfd5c)
 
-![image](https://github.com/EdigarCarvalho/KennedyViagens/assets/106999716/cc4bad5c-9a49-464b-abce-bbbbf1382eb2)
 
 
