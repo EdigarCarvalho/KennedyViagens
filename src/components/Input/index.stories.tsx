@@ -2,7 +2,7 @@ import { StoryObj, Meta } from '@storybook/react';
 import { Input } from './index.stitches';
 
 export default {
-  title: 'Components/Input',
+  title: 'Simple Components/Input',
   component: Input,
   args: {
     size: 'regular',

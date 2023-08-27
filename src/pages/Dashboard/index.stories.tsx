@@ -13,7 +13,7 @@ const mockAuthContext: AuthContextType = {
 const queryClient = new QueryClient();
 
 export default {
-  title: 'Components/Dashboard',
+  title: 'Compounds Components/Dashboard',
   component: Dashboard,
   decorators: [
     (StoryFn) => (

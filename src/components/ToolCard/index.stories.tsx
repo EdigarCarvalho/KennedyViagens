@@ -35,6 +35,7 @@ Primary.args = {
 
 
 export default {
-  title: 'Components/ToolCard',
+  title: 'Compounds Components/ToolCard',
   component: ToolCard,
+  tags: ['autodocs']
 } as Meta;

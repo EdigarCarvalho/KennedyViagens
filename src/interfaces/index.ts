@@ -22,4 +22,10 @@ export interface FormValues {
 export interface SearchBarProps {
     onSearch: (searchTerm: string) => void;
 }
-  
+
+export interface ToolDataProps {
+    title: string;
+    link: string;
+    description: string;
+    tags: string[];
+  }

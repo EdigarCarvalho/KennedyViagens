@@ -3,7 +3,7 @@ import { Textarea } from '..';
 
 
 export default {
-  title: 'Components/Textarea',
+  title: 'Simple Components/Textarea',
   component: Textarea,
 };
 

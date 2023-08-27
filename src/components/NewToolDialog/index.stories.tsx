@@ -5,7 +5,7 @@ import { Meta, Story } from '@storybook/react';
 import { AuthContext, AuthContextType } from '../../auth/AuthContext';
 
 export default {
-  title: 'Components/NewToolDialog',
+  title: 'Compounds Components/NewToolDialog',
   component: NewToolDialog,
   argTypes: {
     onToolAdded: {

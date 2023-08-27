@@ -4,7 +4,7 @@ import { SearchBar } from './index';
 import { SearchBarProps } from '../../interfaces';
 
 export default {
-  title: 'Components/SearchBar',
+  title: 'Simple Components/SearchBar',
   component: SearchBar,
   args: {
     onSearch: action('onSearch'),

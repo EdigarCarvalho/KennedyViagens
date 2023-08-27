@@ -29,7 +29,7 @@ const Template: Story<any> = () => (
 
 
 export default {
-  title: 'Components/DeleteToolDialog',
+  title: 'Compounds Components/DeleteToolDialog',
   component: DeleteToolDialog,
 } as Meta;
 

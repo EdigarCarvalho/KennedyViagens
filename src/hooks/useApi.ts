@@ -1,5 +1,6 @@
-//useApi.ts
+
 import axios from "axios";
+import { ToolDataProps } from "../interfaces";
 export const api = axios.create({
   baseURL: "https://lively-moss-nudxlqdclfnd.vapor-farm-c1.com/api",
 });
@@ -9,14 +10,6 @@ const withAuthorizationHeader = (token: string) => ({
     Authorization: `Bearer ${token}`,
   },
 });
-
-interface ToolDataProps {
-  title: string;
-  link: string;
-  description: string;
-  tags: string[];
-}
-
 
 export const useApi = () => ({
   login: async (email: string, password: string) => {

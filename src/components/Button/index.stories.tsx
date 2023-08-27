@@ -3,8 +3,9 @@ import { StoryObj, Meta } from '@storybook/react';
 import { Button } from './index.stitches';
 
 export default {
-    title: 'Components/Button',
+    title: 'Simple Components/Button',
     component: Button,
+    tags: ['autodocs'],
     args: {
       color: 'ButtonPrimaryNeutral',
       size: 'md',

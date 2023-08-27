@@ -52,7 +52,7 @@ function DashBoard() {
               </div>
       ) : isError ? (
         <Title css={{ marginTop: "30vh", textAlign: "center" }}>
-        Error na requisiçao
+        Error na requisição
       </Title>
       ) : filteredTools?.length === 0 ? (
         <Title css={{ marginTop: "30vh", textAlign: "center" }}>
